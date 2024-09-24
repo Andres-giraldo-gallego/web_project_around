@@ -4,7 +4,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
 }
@@ -17,14 +17,14 @@
 .popup__form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  position: relative;
 }
 .popup__form-x {
   width: 40px;
   height: 40px;
   position: absolute;
-  top: 115px;
-  right: 380px;
+  top: -81px;
+  right: -80px;
   background-color: transparent;
   border: 0;
   cursor: pointer;
@@ -74,4 +74,7 @@
 }
 .popup__Submit-Button:hover {
   filter: opacity(0.7);
+}
+.popup_opened {
+  display: flex;
 }

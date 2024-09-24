@@ -134,10 +134,10 @@
       </section>
       <footer class="footer">© 2024 Around The U.S.</footer>
 
-      <div class="popup">
-        <div class="popup__container">
-          <form class="popup__form">
-            <button class="popup__form-x">
+      <div class="popup" id="popup-profile">
+        <div class="popup__container" id="popup-container">
+          <form class="popup__form" id="popup-form">
+            <button class="popup__form-x" id="popup-form-x">
               <img
                 src="images/Close Icon.svg"
                 class="popup__form-x-img"
@@ -145,16 +145,25 @@
               />
             </button>
             <h2 class="popup__text">Editar perfil</h2>
-            <input name="name" class="popup__name" placeholder="Nombre" />
+            <input
+              name="name"
+              class="popup__name"
+              placeholder="Nombre"
+              id="popup-name"
+            />
             <input
               name="about"
               class="popup__about"
               placeholder="Acerca de mí"
+              id="popup-about"
             />
-            <button class="popup__Submit-Button">Guardar</button>
+            <button class="popup__Submit-Button" id="popup-Submit-Button">
+              Guardar
+            </button>
           </form>
         </div>
       </div>
     </div>
   </body>
+  <script src="scripts/index.js"></script>
 </html>
