@@ -8,8 +8,10 @@ const formElement = document.querySelector(".popup__form");
 const profileName = document.querySelector(".profile_name");
 const profileHobbie = document.querySelector(".profile_hobbie");
 
-buttonEdit.addEventListener("click", function () {
+buttonEdit.addEventListener("click", function (e) {
+  e.preventDefault();
   popupContainer.classList.add("popup_opened");
+  cambiarNombre();
 });
 
 buttonCerrar.addEventListener("click", function (e) {
@@ -26,4 +28,8 @@ buttonGuardar.addEventListener("click", function (e) {
 function profileForm() {
   profileName.textContent = inputName.value;
   profileHobbie.textContent = inputAbout.value;
+}
+function cambiarNombre() {
+  inputName.value = profileName.textContent;
+  inputAbout.value = profileHobbie.textContent;
 }
