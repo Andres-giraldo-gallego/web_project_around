@@ -78,3 +78,37 @@
 .popup_opened {
   display: flex;
 }
+@media (min-width: 200px) and (max-width: 885px) {
+  .popup__container {
+    padding: 2rem;
+    border-radius: 10px;
+  }
+
+  .popup__form-x {
+    width: 26px;
+    height: 26px;
+    top: -75px;
+    right: -20px;
+  }
+
+  .popup__text {
+    font-size: 18px;
+    line-height: 22px;
+    width: 238px;
+    height: 22px;
+    margin-bottom: 76px;
+  }
+  .popup__name {
+    width: 238px;
+    height: 26px;
+  }
+  .popup__about {
+    width: 238px;
+    height: 26px;
+    margin-bottom: 46px;
+  }
+  .popup__Submit-Button {
+    width: 238px;
+    height: 46px;
+  }
+}
