@@ -23,4 +23,4 @@ Visita la web:
 http://127.0.0.1:5500/
 
 github :
-https://github.com/Andres-giraldo-gallego/web_project_around
+https://andres-giraldo-gallego.github.io/web_project_around/
