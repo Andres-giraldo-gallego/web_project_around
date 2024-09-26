@@ -19,8 +19,5 @@ PROJECT AROUND es completamente responsiva, adaptándose a diferentes resolucion
 Este proyecto fue desarrollado por:
 Andres giraldo gallego.
 
-Visita la web:
-http://127.0.0.1:5500/
-
-github :
+github pages :
 https://andres-giraldo-gallego.github.io/web_project_around/
