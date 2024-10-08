@@ -39,105 +39,56 @@
         </button>
       </section>
       <section class="elements">
-        <ul class="elements_container">
-          <li class="elements_card">
-            <img
-              src="images/kirill-pershin-1088404-unsplash.png"
-              alt="valle de yosemite"
-              class="elements_img"
-            />
-            <div class="elements_info">
-              <p class="elements_text">Valle de Yosemite</p>
-              <button class="elements_link" aria-label="Me gusta">
+        <div class="elements_container">
+          <template id="elements_template">
+            <div class="elements_card">
+              <img alt="foto de referencia" class="elements_img" />
+              <button class="elements__trash" aria-label="Borrar">
                 <img
-                  src="images/Group.png"
-                  alt="corazon me gusta"
-                  class="elements_link-img"
+                  src="images/Trash.png"
+                  alt="bote de basura"
+                  class="elements__trash-img"
                 />
               </button>
+
+              <div class="elements_info">
+                <p class="elements_text"></p>
+                <button class="elements_link" aria-label="Me gusta">
+                  <img
+                    src="images/Group.png"
+                    alt="corazon me gusta"
+                    class="elements_link-img"
+                  />
+                </button>
+              </div>
             </div>
-          </li>
-          <li class="elements_card">
-            <img src="images/lago.png" alt="Lago Louise" class="elements_img" />
-            <div class="elements_info">
-              <p class="elements_text">Lago Louise</p>
-              <button class="elements_link" aria-label="Me gusta">
-                <img
-                  src="images/Group.png"
-                  alt="corazon me gusta"
-                  class="elements_link-img"
-                />
-              </button>
-            </div>
-          </li>
-          <li class="elements_card">
-            <img
-              src="images/montañas.png"
-              alt="Montañas Calvas"
-              class="elements_img"
-            />
-            <div class="elements_info">
-              <p class="elements_text">Montañas Calvas</p>
-              <button class="elements_link" aria-label="Me gusta">
-                <img
-                  src="images/Group.png"
-                  alt="corazon me gusta"
-                  class="elements_link-img"
-                />
-              </button>
-            </div>
-          </li>
-          <li class="elements_card">
-            <img src="images/latemar.png" alt="Latemar" class="elements_img" />
-            <div class="elements_info">
-              <p class="elements_text">Latemar</p>
-              <button class="elements_link" aria-label="Me gusta">
-                <img
-                  src="images/Group.png"
-                  alt="corazon me gusta"
-                  class="elements_link-img"
-                />
-              </button>
-            </div>
-          </li>
-          <li class="elements_card">
-            <img src="images/vanois.png" alt="vanois" class="elements_img" />
-            <div class="elements_info">
-              <p class="elements_text">Vanois National...</p>
-              <button class="elements_link" aria-label="Me gusta">
-                <img
-                  src="images/Group.png"
-                  alt="corazon me gusta"
-                  class="elements_link-img"
-                />
-              </button>
-            </div>
-          </li>
-          <li class="elements_card">
-            <img
-              src="images/LagodiBraies.png"
-              alt="Lago di Braies"
-              class="elements_img"
-            />
-            <div class="elements_info">
-              <p class="elements_text">Lago di Braies</p>
-              <button class="elements_link" aria-label="Me gusta">
-                <img
-                  src="images/Group.png"
-                  alt="corazon me gusta"
-                  class="elements_link-img"
-                />
-              </button>
-            </div>
-          </li>
-        </ul>
+          </template>
+        </div>
       </section>
-      <footer class="footer">© 2024 Around The U.S.</footer>
+
+      <dialog class="dialog__content">
+        <button class="dialog__button" id="dialog-x" type="button">
+          <img
+            src="images/Close Icon.svg"
+            class="popup__form-x-img"
+            alt="boton de cierre"
+          />
+        </button>
+
+        <img class="dialog__img" id="dialog-img" />
+        <div class="dialog__text" id="dialog-text"></div>
+      </dialog>
+
+      <footer class="footer">© 2024 Andres Giraldo Gallego.</footer>
 
       <div class="popup" id="popup-profile">
         <div class="popup__container" id="popup-container">
           <form class="popup__form" id="popup-form">
-            <button class="popup__form-x" id="popup-form-x">
+            <button
+              class="popup__form-x popup__close-btn"
+              id="popup-form-x"
+              type="button"
+            >
               <img
                 src="images/Close Icon.svg"
                 class="popup__form-x-img"
@@ -159,6 +110,40 @@
             />
             <button class="popup__Submit-Button" id="popup-Submit-Button">
               Guardar
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="popup" id="popup-card">
+        <div class="popup__container" id="popup-card-container">
+          <form class="popup__form" id="popup-card-form">
+            <button
+              class="popup__form-x popup__close-btn"
+              id="popup-card-form-x"
+              type="button"
+            >
+              <img
+                id="popup-x"
+                src="images/Close Icon.svg"
+                class="popup__form-x-img"
+                alt="boton de cierre"
+              />
+            </button>
+            <h2 class="popup__text">Nuevo lugar</h2>
+            <input
+              name="name"
+              class="popup__name"
+              placeholder="Título"
+              id="popup-card-name"
+            />
+            <input
+              name="about"
+              class="popup__about"
+              placeholder="Enlace a la imagen"
+              id="popup-link"
+            />
+            <button class="popup__Submit-Button" id="popup-card-Submit-Button">
+              Crear
             </button>
           </form>
         </div>
