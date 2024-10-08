@@ -78,6 +78,7 @@
 .popup_opened {
   display: flex;
 }
+
 @media (min-width: 200px) and (max-width: 885px) {
   .popup__container {
     padding: 2rem;

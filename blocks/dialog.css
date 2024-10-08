@@ -1,0 +1,33 @@
+.dialog__content {
+  border: none;
+  background-color: transparent;
+  padding: 50px;
+  outline: none;
+}
+.dialog__img {
+  width: 75vw;
+  max-width: 433px;
+  height: 75vh;
+  max-height: 540px;
+}
+.dialog__text {
+  color: #ffffff;
+}
+
+.dialog__button {
+  position: absolute;
+  right: 1px;
+  top: 6px;
+  background-color: transparent;
+  border: none;
+}
+
+.dialog__content::backdrop {
+  background-color: hsl(0% 0% 0% /80%);
+}
+@media (min-width: 200px) and (max-width: 885px) {
+  .dialog__img {
+    max-width: 240px;
+    max-height: 299px;
+  }
+}
