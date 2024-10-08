@@ -60,6 +60,16 @@
   height: 19px;
   margin-left: 10px;
 }
+.elements_link-img:hover {
+  filter: opacity(0.5);
+}
+.elements_link-img-active {
+  background-image: url(../images/Union.svg);
+  max-width: 21px;
+  width: 100%;
+  height: 19px;
+  margin-left: 10px;
+}
 .elements__trash {
   position: absolute;
   width: 18px;
@@ -75,7 +85,7 @@
   position: absolute;
   width: 18px;
   height: 19px;
-  left: 242px;
+  left: 252px;
   top: 19px;
 }
 .elements__trash-img:hover {

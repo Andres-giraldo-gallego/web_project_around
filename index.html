@@ -66,12 +66,29 @@
         </div>
       </section>
 
-      <footer class="footer">© 2024 Around The U.S.</footer>
+      <dialog class="dialog__content">
+        <button class="dialog__button" id="dialog-x" type="button">
+          <img
+            src="images/Close Icon.svg"
+            class="popup__form-x-img"
+            alt="boton de cierre"
+          />
+        </button>
+
+        <img class="dialog__img" id="dialog-img" />
+        <div class="dialog__text" id="dialog-text"></div>
+      </dialog>
+
+      <footer class="footer">© 2024 Andres Giraldo Gallego.</footer>
 
       <div class="popup" id="popup-profile">
         <div class="popup__container" id="popup-container">
           <form class="popup__form" id="popup-form">
-            <button class="popup__form-x" id="popup-form-x">
+            <button
+              class="popup__form-x popup__close-btn"
+              id="popup-form-x"
+              type="button"
+            >
               <img
                 src="images/Close Icon.svg"
                 class="popup__form-x-img"
@@ -100,8 +117,13 @@
       <div class="popup" id="popup-card">
         <div class="popup__container" id="popup-card-container">
           <form class="popup__form" id="popup-card-form">
-            <button class="popup__form-x" id="popup-card-form-x">
+            <button
+              class="popup__form-x popup__close-btn"
+              id="popup-card-form-x"
+              type="button"
+            >
               <img
+                id="popup-x"
                 src="images/Close Icon.svg"
                 class="popup__form-x-img"
                 alt="boton de cierre"
