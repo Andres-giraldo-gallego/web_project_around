@@ -21,6 +21,7 @@ const imgDialog = document.querySelector("#dialog-img");
 const textDialog = document.querySelector("#dialog-text");
 const closeButtons = document.querySelectorAll(".popup__close-btn");
 const closeButtonImg = document.querySelector(".dialog__button");
+//const dialogCerrar = document.querySelectorAll("#dialog");
 
 closeButtons.forEach(function (closeButton) {
   closeButton.addEventListener("click", function (e) {
@@ -139,4 +140,51 @@ function toggleElementsLink(card) {
   buttonLink.addEventListener("click", function () {
     buttonLink.classList.toggle("elements_link-img-active");
   });
+}
+
+// Cerrar por fuera del formulario
+popupContainer.addEventListener("click", function (evt) {
+  if (evt.target.id === "popup-profile") {
+    popupContainer.classList.remove("popup_opened");
+  }
+});
+
+document.addEventListener("keyup", precionar_Esc);
+
+function closePopupContainer() {
+  popupContainer.classList.remove("popup_opened");
+}
+
+popupCard.addEventListener("click", function (evt) {
+  if (evt.target.id === "popup-card") {
+    popupCard.classList.remove("popup_opened");
+  }
+});
+document.addEventListener("keyup", precionar_tecla);
+
+function closePopupCard() {
+  popupCard.classList.remove("popup_opened");
+}
+
+dialogImg.addEventListener("click", function (evt) {
+  console.log(dialogImg);
+  if (evt.target.id === "dialog") {
+    dialogImg.close();
+  }
+});
+
+// cerrar popup con la letra esc
+
+function precionar_tecla(evt) {
+  teclas_esc = evt.key;
+  if (teclas_esc == "Escape") {
+    return closePopupCard();
+  }
+}
+
+function precionar_Esc(evt) {
+  teclas_esc = evt.key;
+  if (teclas_esc == "Escape") {
+    return closePopupContainer();
+  }
 }
