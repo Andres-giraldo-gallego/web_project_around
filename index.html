@@ -68,7 +68,7 @@
         </div>
       </section>
 
-      <dialog class="dialog__content">
+      <dialog class="dialog__content" id="dialog">
         <button class="dialog__button" id="dialog-x" type="button">
           <img
             src="images/Close Icon.svg"
@@ -100,16 +100,32 @@
             <h2 class="popup__text">Editar perfil</h2>
             <input
               name="name"
-              class="popup__name"
+              class="popup__name popup__input"
               placeholder="Nombre"
               id="popup-name"
+              required
+              minlength="2"
+              maxlength="40"
             />
+
+            <span id="name-error" class="popup__red"
+              >Por favor, rellena este campo.</span
+            >
+
             <input
               name="about"
-              class="popup__about"
+              class="popup__about popup__input"
               placeholder="Acerca de mí"
               id="popup-about"
+              required
+              minlength="2"
+              maxlength="200"
             />
+
+            <span id="about-error" class="popup__red"
+              >Por favor, rellena este campo.</span
+            >
+
             <button class="popup__Submit-Button" id="popup-Submit-Button">
               Guardar
             </button>
@@ -134,16 +150,30 @@
             <h2 class="popup__text">Nuevo lugar</h2>
             <input
               name="name"
-              class="popup__name"
+              class="popup__name popup__input"
               placeholder="Título"
               id="popup-card-name"
+              required
+              minlength="2"
+              maxlength="30"
             />
+
+            <span id="title-error" class="popup__red"
+              >Por favor, rellena este campo.</span
+            >
+
             <input
               name="about"
-              class="popup__about"
+              class="popup__about popup__input"
               placeholder="Enlace a la imagen"
               id="popup-link"
+              required
+              type="url"
             />
+            <span id="link-error" class="popup__red"
+              >Por favor, introduce una direccion web.</span
+            >
+
             <button class="popup__Submit-Button" id="popup-card-Submit-Button">
               Crear
             </button>
@@ -152,5 +182,6 @@
       </div>
     </div>
     <script src="scripts/index.js"></script>
+    <script src="scripts/validate.js"></script>
   </body>
 </html>
