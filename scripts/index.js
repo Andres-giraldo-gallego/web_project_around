@@ -69,6 +69,7 @@ function cambiarNombre() {
   inputName.value = profileName.textContent;
   inputAbout.value = profileHobbie.textContent;
 }
+cambiarNombre();
 
 const initialCards = [
   {
