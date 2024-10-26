@@ -20,14 +20,27 @@ const enableValidation = (settings) => {
         `#${inputElement.name}-error`
       );
 
+      errorElement.textContent = inputElement.validationMessage;
+      if (!inputElement.checkValidity()) {
+        inputElement.classList.add(settings.inputErrorClass);
+        submitButton.disabled = true;
+        submitButton.classList.add(settings.inactiveButtonClass);
+      } else {
+        inputElement.classList.remove(settings.inputErrorClass);
+        submitButton.disabled = false;
+        submitButton.classList.remove(settings.inactiveButtonClass);
+      }
+
       inputElement.addEventListener("input", () => {
         errorElement.textContent = inputElement.validationMessage;
         if (!inputElement.checkValidity()) {
           inputElement.classList.add(settings.inputErrorClass);
           submitButton.disabled = true;
+          submitButton.classList.add(settings.inactiveButtonClass);
         } else {
           inputElement.classList.remove(settings.inputErrorClass);
           submitButton.disabled = false;
+          submitButton.classList.remove(settings.inactiveButtonClass);
         }
       });
     });
