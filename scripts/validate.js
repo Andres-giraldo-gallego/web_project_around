@@ -11,10 +11,14 @@ const enableValidation = (settings) => {
   const formList = document.querySelectorAll(settings.formSelector);
 
   formList.forEach((forElement) => {
-    const inputList = forElement.querySelectorAll(settings.inputSelector);
+    const inputList = Array.from(
+      forElement.querySelectorAll(settings.inputSelector)
+    );
     const submitButton = forElement.querySelector(
       settings.submitButtonSelector
     );
+    checkImputValiditi(inputList, submitButton, settings);
+
     inputList.forEach((inputElement) => {
       const errorElement = forElement.querySelector(
         `#${inputElement.name}-error`
@@ -23,24 +27,17 @@ const enableValidation = (settings) => {
       errorElement.textContent = inputElement.validationMessage;
       if (!inputElement.checkValidity()) {
         inputElement.classList.add(settings.inputErrorClass);
-        submitButton.disabled = true;
-        submitButton.classList.add(settings.inactiveButtonClass);
       } else {
         inputElement.classList.remove(settings.inputErrorClass);
-        submitButton.disabled = false;
-        submitButton.classList.remove(settings.inactiveButtonClass);
       }
 
       inputElement.addEventListener("input", () => {
+        checkImputValiditi(inputList, submitButton, settings);
         errorElement.textContent = inputElement.validationMessage;
         if (!inputElement.checkValidity()) {
           inputElement.classList.add(settings.inputErrorClass);
-          submitButton.disabled = true;
-          submitButton.classList.add(settings.inactiveButtonClass);
         } else {
           inputElement.classList.remove(settings.inputErrorClass);
-          submitButton.disabled = false;
-          submitButton.classList.remove(settings.inactiveButtonClass);
         }
       });
     });
@@ -48,3 +45,16 @@ const enableValidation = (settings) => {
 };
 
 enableValidation(settingsValidation);
+
+function checkImputValiditi(inputList, submitButton, settings) {
+  const hasInvalidInput = inputList.some((inputElement) => {
+    return !inputElement.checkValidity();
+  });
+  if (hasInvalidInput) {
+    submitButton.disabled = true;
+    submitButton.classList.add(settings.inactiveButtonClass);
+  } else {
+    submitButton.disabled = false;
+    submitButton.classList.remove(settings.inactiveButtonClass);
+  }
+}
