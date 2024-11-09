@@ -1,13 +1,4 @@
-const settingsValidation = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__Submit-Button",
-  inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error_visible",
-};
-
-class FormValidator {
+export default class FormValidator {
   constructor(settings) {
     this.settings = settings;
   }
@@ -62,5 +53,3 @@ class FormValidator {
     }
   }
 }
-const validation = new FormValidator(settingsValidation);
-validation.enableValidation();

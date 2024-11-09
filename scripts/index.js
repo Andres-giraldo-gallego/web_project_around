@@ -1,3 +1,4 @@
+import FormValidator from "./FormValidator.js";
 import Card from "./card.js";
 import { initialCards } from "./utils.js";
 
@@ -128,3 +129,15 @@ function precionar_Esc(evt) {
     return closePopupContainer();
   }
 }
+
+const settingsValidation = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__Submit-Button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
+};
+
+const validation = new FormValidator(settingsValidation);
+validation.enableValidation();
