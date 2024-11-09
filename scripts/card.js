@@ -1,3 +1,7 @@
+const dialogImg = document.querySelector(".dialog__content");
+const imgDialog = document.querySelector("#dialog-img");
+const textDialog = document.querySelector("#dialog-text");
+
 export default class Card {
   constructor(name, link) {
     this.name = name;
@@ -21,11 +25,12 @@ export default class Card {
   }
   createCard() {
     this.setProperties();
+    this.setEventsListeners();
     return this.htmlCard;
   }
 
   toggleLike() {
-    this.buttonLink.classList.toggle(".elements_link-img-active");
+    this.buttonLink.classList.toggle("elements_link-img-active");
   }
 
   removeCard() {
@@ -37,13 +42,14 @@ export default class Card {
       this.toggleLike();
     });
 
-    this.buttonTrash.addEventListener("click", function () {
+    this.buttonTrash.addEventListener("click", () => {
       this.removeCard();
     });
-  }
 
-  getCard() {
-    this.setProperties();
-    this.setEventsListeners();
+    this.cardImage.addEventListener("click", () => {
+      dialogImg.showModal();
+      imgDialog.src = this.link;
+      textDialog.textContent = this.name;
+    });
   }
 }
