@@ -1,8 +1,12 @@
 import FormValidator from "./FormValidator.js";
 import Card from "./card.js";
 import { initialCards } from "./utils.js";
+import Section from "./Section.js";
+import Popup from "./popup.js";
 
 const popupContainer = document.querySelector(".popup");
+const popupCard = document.querySelector("#popup-card");
+
 const buttonEdit = document.querySelector(".profile_edit-button");
 const buttonCerrar = document.querySelector(".popup__form-x");
 const inputName = document.querySelector("#popup-name");
@@ -13,7 +17,7 @@ const profileName = document.querySelector(".profile_name");
 const profileHobbie = document.querySelector(".profile_hobbie");
 const carTemplate = document.querySelector("#elements_template").content;
 const buttonAdd = document.querySelector(".profile_add-button");
-const popupCard = document.querySelector("#popup-card");
+
 const buttonCrear = document.querySelector("#popup-card-Submit-Button");
 const cardName = document.querySelector("#popup-card-name");
 const cardLink = document.querySelector("#popup-link");
@@ -22,6 +26,9 @@ const dialogImg = document.querySelector(".dialog__content");
 const dislogText = document.querySelector(".dialog__text");
 const closeButtons = document.querySelectorAll(".popup__close-btn");
 const closeButtonImg = document.querySelector(".dialog__button");
+
+const popup = new Popup("#popup-card");
+popup.setEventListeners();
 
 closeButtons.forEach(function (closeButton) {
   closeButton.addEventListener("click", function (e) {
@@ -37,7 +44,7 @@ function closePopup(popup) {
 
 buttonAdd.addEventListener("click", function (e) {
   e.preventDefault();
-  popupCard.classList.add("popup_opened");
+  popup.open();
 });
 
 buttonEdit.addEventListener("click", function (e) {
@@ -72,11 +79,16 @@ function cambiarNombre() {
 }
 cambiarNombre();
 
-initialCards.forEach((item) => {
-  const elements = document.querySelector(".elements_container");
+//  clase section
+function createCard(item) {
   const card = new Card(item.name, item.link);
-  const cardElement = elements.prepend(card.createCard());
-});
+  const cardElement = card.createCard();
+  return cardElement;
+}
+const elements = document.querySelector(".elements_container");
+const section = new Section(initialCards, createCard, elements);
+
+section.renderer();
 
 closeButtonImg.addEventListener("click", function (evt) {
   evt.preventDefault();
@@ -90,8 +102,6 @@ popupContainer.addEventListener("click", function (evt) {
   }
 });
 
-document.addEventListener("keyup", precionar_Esc);
-
 function closePopupContainer() {
   popupContainer.classList.remove("popup_opened");
 }
@@ -101,7 +111,6 @@ popupCard.addEventListener("click", function (evt) {
     popupCard.classList.remove("popup_opened");
   }
 });
-document.addEventListener("keyup", precionar_tecla);
 
 function closePopupCard() {
   popupCard.classList.remove("popup_opened");
@@ -116,7 +125,7 @@ dialogImg.addEventListener("click", function (evt) {
 
 // cerrar popup con la letra esc
 
-function precionar_tecla(evt) {
+/*function precionar_tecla(evt) {
   const teclas_esc = evt.key;
   if (teclas_esc == "Escape") {
     return closePopupCard();
@@ -128,7 +137,8 @@ function precionar_Esc(evt) {
   if (teclas_esc == "Escape") {
     return closePopupContainer();
   }
-}
+}*/
+// clase formValidator
 
 const settingsValidation = {
   formSelector: ".popup__form",

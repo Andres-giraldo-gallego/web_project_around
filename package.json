@@ -1,0 +1,11 @@
+{
+  "name": "web_project_around",
+  "version": "1.0.0",
+  "description": ". Resumen del proyecto WEB PROJECT AROUND es una pagina web interactiva, donde el usuario va poder utilizarla como una red social.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
