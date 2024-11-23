@@ -1,4 +1,4 @@
-.dialog__content {
+.dialog {
   border: none;
   background-color: transparent;
   padding: 50px;
@@ -23,7 +23,7 @@
   outline: none;
 }
 
-.dialog__content::backdrop {
+.dialog::backdrop {
   background-color: hsl(0deg 0% 3.14% / 70%);
 }
 

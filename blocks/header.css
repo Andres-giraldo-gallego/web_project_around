@@ -8,7 +8,7 @@
   padding-bottom: 41px;
 }
 
-.header_logo {
+.header__logo {
   width: 173px;
   background-size: cover;
 }
@@ -18,7 +18,7 @@
     max-width: 320px;
     padding-bottom: 32px;
   }
-  .header_logo {
+  .header__logo {
     width: 126px;
     margin-left: 27px;
   }

@@ -12,34 +12,34 @@
   <body>
     <div class="page">
       <header class="header">
-        <img src="images/Vector.svg" alt="logo" class="header_logo" />
+        <img src="images/Vector.svg" alt="logo" class="header__logo" />
       </header>
       <section class="profile">
-        <img src="images/Avatar.png" alt="Avatar" class="profile_avatar" />
-        <div class="profile_content">
-          <div class="profile_info">
-            <p class="profile_name">Jacques Cousteau</p>
-            <p class="profile_hobbie">Explorador</p>
+        <img src="images/Avatar.png" alt="Avatar" class="profile__avatar" />
+        <div class="profile__content">
+          <div class="profile__info">
+            <p class="profile__name">Jacques Cousteau</p>
+            <p class="profile__hobbie">Explorador</p>
           </div>
 
-          <button class="profile_edit-button" aria-label="Editar perfil">
+          <button class="profile__edit-button" aria-label="Editar perfil">
             <img
               src="images/Edit Button.png"
               alt="Botón para editar perfil"
-              class="profile_edit-button-img"
+              class="profile__edit-button-img"
             />
           </button>
         </div>
-        <button class="profile_add-button" aria-label="Agregar nueva imagen">
+        <button class="profile__add-button" aria-label="Agregar nueva imagen">
           <img
             src="./images/Add Button.png"
             alt="Botón para agregar nueva imagen"
-            class="profile_add-button-img"
+            class="profile__add-button-img"
           />
         </button>
       </section>
       <section class="elements">
-        <div class="elements_container">
+        <div class="elements__container">
           <template id="elements_template">
             <div class="elements_card">
               <div class="elements_img-container">
@@ -68,7 +68,7 @@
         </div>
       </section>
 
-      <dialog class="dialog__content" id="dialog">
+      <dialog class="dialog" id="dialog">
         <button
           class="popup__close-btn dialog__button"
           id="dialog-x"
