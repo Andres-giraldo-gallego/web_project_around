@@ -3,9 +3,10 @@ const imgDialog = document.querySelector("#dialog-img");
 const textDialog = document.querySelector("#dialog-text");
 
 export default class Card {
-  constructor(name, link) {
+  constructor(name, link, handleCardClick) {
     this.name = name;
     this.link = link;
+    this.handleCardClick = handleCardClick;
   }
 
   getTemplate() {
@@ -47,9 +48,7 @@ export default class Card {
     });
 
     this.cardImage.addEventListener("click", () => {
-      dialogImg.showModal();
-      imgDialog.src = this.link;
-      textDialog.textContent = this.name;
+      this.handleCardClick(this.name, this.link);
     });
   }
 }
