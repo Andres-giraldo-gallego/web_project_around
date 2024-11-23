@@ -19,8 +19,12 @@ export default class FormValidator {
         const errorElement = forElement.querySelector(
           `#${inputElement.name}-error`
         );
+        const hanValue = inputList.some((item) => item.value.length > 0);
+        inputElement.classList.remove(this.settings.inputErrorClass);
+        errorElement.textContent = hanValue
+          ? inputElement.validationMessage
+          : "";
 
-        errorElement.textContent = inputElement.validationMessage;
         if (!inputElement.checkValidity()) {
           inputElement.classList.add(this.settings.inputErrorClass);
         } else {
@@ -30,6 +34,7 @@ export default class FormValidator {
         inputElement.addEventListener("input", () => {
           this.checkImputValiditi(inputList, submitButton, this.settings);
           errorElement.textContent = inputElement.validationMessage;
+
           if (!inputElement.checkValidity()) {
             inputElement.classList.add(this.settings.inputErrorClass);
           } else {
