@@ -7,12 +7,12 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 
-const buttonEdit = document.querySelector(".profile_edit-button");
+const buttonEdit = document.querySelector(".profile__edit-button");
 const inputName = document.querySelector("#popup-name");
 const inputAbout = document.querySelector("#popup-about");
-const profileName = document.querySelector(".profile_name");
-const profileHobbie = document.querySelector(".profile_hobbie");
-const buttonAdd = document.querySelector(".profile_add-button");
+const profileName = document.querySelector(".profile__name");
+const profileHobbie = document.querySelector(".profile__hobbie");
+const buttonAdd = document.querySelector(".profile__add-button");
 const cardName = document.querySelector("#popup-card-name");
 const cardLink = document.querySelector("#popup-link");
 
@@ -44,7 +44,7 @@ buttonEdit.addEventListener("click", function (e) {
 function creatCard() {
   const name = cardName.value;
   const link = cardLink.value;
-  const elements = document.querySelector(".elements_container");
+  const elements = document.querySelector(".elements__container");
   const card = new Card(name, link, handleOpenImage);
   elements.prepend(card.createCard());
   popup.close();
@@ -67,7 +67,7 @@ function createCard(item) {
   const cardElement = card.createCard();
   return cardElement;
 }
-const elements = document.querySelector(".elements_container");
+const elements = document.querySelector(".elements__container");
 const section = new Section(initialCards, createCard, elements);
 
 function handleOpenImage(name, link) {
