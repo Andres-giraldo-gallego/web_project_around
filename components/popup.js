@@ -40,7 +40,10 @@ export default class Popup {
     });
 
     // Selecciona todos los botones de cierre
-    const closeButtons = this.popup.querySelectorAll(".popup__close-btn");
+    let closeButtons = this.popup.querySelectorAll(".popup__close-btn");
+    if (this.popup && this.popup.tagName === "DIALOG") {
+      closeButtons = this.popup.querySelectorAll(".dialog__button");
+    }
 
     // Asegura que cada botón de cierre cierre el popup
     closeButtons.forEach((button) => {
