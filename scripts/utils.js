@@ -1,4 +1,4 @@
-export const initialCards = [
+/*export const initialCards = [
   {
     name: "Machu Picchu",
     link: "https://media.istockphoto.com/id/1410796651/es/foto/pareja-vestida-de-ponchos-observando-las-ruinas-de-machu-picchu-per%C3%BA.jpg?s=2048x2048&w=is&k=20&c=1D6GM_8KNtEZWilnl9p7ubLQ3qQMoXIckDJthJqvLEQ=",
@@ -23,4 +23,4 @@ export const initialCards = [
     name: "San Andres Isla",
     link: "https://s3.amazonaws.com/rtvc-assets-senalcolombia.gov.co/s3fs-public/styles/imagen_noticia/public/field/image/San-andres-RTVC.jpg?itok=iVcNPiNw",
   },
-];
+];*/

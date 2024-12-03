@@ -1,11 +1,12 @@
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/card.js";
-import { initialCards } from "./utils.js";
+/*import { initialCards } from "./utils.js";*/
 import Section from "../components/section.js";
 import Popup from "../components/popup.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
+import api from "./Api.js";
 
 const buttonEdit = document.querySelector(".profile__edit-button");
 const inputName = document.querySelector("#popup-name");
@@ -49,10 +50,22 @@ function creatCard() {
   elements.prepend(card.createCard());
   popup.close();
 }
+
+api.getInitialCards().then((initialCards) => {
+  const section = new Section(initialCards, createCard, elements);
+  section.renderer();
+});
+
+api.getUserInfo().then((Response) => {
+  userInfo.setUserInfo(Response.name, Response.about, Response.avatar);
+});
+
 // userinfo
 
-function profileForm() {
-  userInfo.setUserInfo(inputName.value, inputAbout.value);
+function profileForm(data) {
+  api.editUserInfo(data).then((Response) => {
+    userInfo.setUserInfo(Response.name, Response.about, Response.avatar);
+  });
   popupprofile.close();
 }
 function cambiarNombre() {
@@ -68,13 +81,13 @@ function createCard(item) {
   return cardElement;
 }
 const elements = document.querySelector(".elements__container");
-const section = new Section(initialCards, createCard, elements);
+/*const section = new Section(initialCards, createCard, elements);*/
 
 function handleOpenImage(name, link) {
   imagepopup.open(name, link);
 }
 
-section.renderer();
+/*section.renderer();*/
 
 // clase formValidator
 
