@@ -17,8 +17,19 @@ const buttonAdd = document.querySelector(".profile__add-button");
 const cardName = document.querySelector("#popup-card-name");
 const cardLink = document.querySelector("#popup-link");
 
+const imagAvatar = document.querySelector(".profile__avatar-edit");
+
 // clase popup
 const popup = new PopupWithForm("#popup-card", creatCard);
+
+const popupEditAvatar = new PopupWithForm("#popup-avatar", editAvatar);
+function editAvatar(data) {
+  api.editAvatarUser(data.avatar).then((response) => {
+    userInfo.setUserInfo(response.name, response.about, response.avatar);
+    popupEditAvatar.close();
+  });
+}
+
 const popupprofile = new PopupWithForm("#popup-profile", profileForm);
 const popupDialog = new Popup("#dialog");
 const imagepopup = new PopupWithImage("#dialog");
@@ -28,6 +39,7 @@ popup.setEventListeners();
 popupprofile.setEventListeners();
 popupDialog.setEventListeners();
 imagepopup.setEventListeners();
+popupEditAvatar.setEventListeners();
 
 // clase PopupWithForm
 
@@ -42,22 +54,41 @@ buttonEdit.addEventListener("click", function (e) {
   cambiarNombre();
 });
 
+let section;
+
 function creatCard() {
-  const name = cardName.value;
-  const link = cardLink.value;
-  const elements = document.querySelector(".elements__container");
-  const card = new Card(name, link, handleOpenImage);
-  elements.prepend(card.createCard());
-  popup.close();
+  api
+    .createCard({
+      name: cardName.value,
+      link: cardLink.value,
+    })
+    .then((response) => {
+      console.log(response);
+      const newCard = createCard(response);
+      section.addItem(newCard);
+      // renderCard(response, creatCard);
+      /*const name = cardName.value;
+      const link = cardLink.value;
+      console.log(name, link);
+      const elements = document.querySelector(".elements__container");
+      const card = new Card(name, link, handleOpenImage);
+      elements.prepend(card.createCard());
+      popup.close();*/
+    });
 }
 
 api.getInitialCards().then((initialCards) => {
-  const section = new Section(initialCards, createCard, elements);
+  section = new Section(initialCards, createCard, elements);
   section.renderer();
 });
 
 api.getUserInfo().then((Response) => {
   userInfo.setUserInfo(Response.name, Response.about, Response.avatar);
+});
+
+imagAvatar.addEventListener("click", (evt) => {
+  evt.preventDefault();
+  popupEditAvatar.open();
 });
 
 // userinfo
@@ -81,13 +112,10 @@ function createCard(item) {
   return cardElement;
 }
 const elements = document.querySelector(".elements__container");
-/*const section = new Section(initialCards, createCard, elements);*/
 
 function handleOpenImage(name, link) {
   imagepopup.open(name, link);
 }
-
-/*section.renderer();*/
 
 // clase formValidator
 
