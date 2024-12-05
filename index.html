@@ -15,7 +15,14 @@
         <img src="images/Vector.svg" alt="logo" class="header__logo" />
       </header>
       <section class="profile">
-        <img src="images/Avatar.png" alt="Avatar" class="profile__avatar" />
+        <div class="profile__container">
+          <img
+            src="images/Vector (1).svg"
+            alt="lapiz"
+            class="profile__avatar-edit"
+          />
+          <img src="images/Avatar.png" alt="Avatar" class="profile__avatar" />
+        </div>
         <div class="profile__content">
           <div class="profile__info">
             <p class="profile__name">Andres Giraldo.</p>
@@ -128,6 +135,7 @@
           </form>
         </div>
       </div>
+
       <div class="popup" id="popup-card">
         <div class="popup__container" id="popup-card-container">
           <form class="popup__form" id="popup-card-form">
@@ -168,6 +176,39 @@
 
             <button class="popup__Submit-Button" id="popup-card-Submit-Button">
               Crear
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="popup" id="popup-avatar">
+        <div class="popup__container" id="popup-container">
+          <form class="popup__form" id="popup-form">
+            <button
+              class="popup__form-x popup__close-btn"
+              id="popup-form-x"
+              type="button"
+            >
+              <img
+                src="images/Close Icon.svg"
+                class="popup__form-img"
+                alt="boton de cierre"
+              />
+            </button>
+            <h2 class="popup__text">Cambiar foto de perfil</h2>
+            <input
+              name="avatar"
+              class="popup__name popup__input"
+              placeholder="https://somewebsite.com/someimage.jpg"
+              id="popup-avatar"
+              required
+              minlength="2"
+            />
+
+            <span id="avatar-error" class="popup__red"></span>
+
+            <button class="popup__Submit-Button" id="popup-Submit-Button">
+              Guardar
             </button>
           </form>
         </div>

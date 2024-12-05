@@ -6,6 +6,7 @@ class Api {
 
   getInitialCards() {
     return fetch(`${this.baseURL}/cards`, {
+      method: "GET",
       headers: {
         ...this.headers,
       },
@@ -31,7 +32,7 @@ class Api {
 
   editUserInfo(body) {
     return fetch(`${this.baseURL}/users/me`, {
-      method: "PACH",
+      method: "PATCH",
       headers: {
         ...this.headers,
       },
@@ -42,7 +43,36 @@ class Api {
       }
     });
   }
-  // otros métodos para trabajar con la API
+
+  editAvatarUser(avatar) {
+    return fetch(`${this.baseURL}/users/me/avatar`, {
+      method: "PATCH",
+      headers: {
+        ...this.headers,
+      },
+      body: JSON.stringify({
+        avatar: avatar,
+      }),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+    });
+  }
+
+  createCard(body) {
+    return fetch(`${this.baseURL}/cards/`, {
+      method: "POST",
+      headers: {
+        ...this.headers,
+      },
+      body: JSON.stringify(body),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+    });
+  }
 }
 
 const api = new Api({
