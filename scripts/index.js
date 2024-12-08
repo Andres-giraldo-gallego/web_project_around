@@ -63,22 +63,15 @@ function creatCard() {
       link: cardLink.value,
     })
     .then((response) => {
-      console.log(response);
       const newCard = createCard(response);
-      section.addItem(newCard);
-      // renderCard(response, creatCard);
-      /*const name = cardName.value;
-      const link = cardLink.value;
-      console.log(name, link);
-      const elements = document.querySelector(".elements__container");
-      const card = new Card(name, link, handleOpenImage);
-      elements.prepend(card.createCard());
-      popup.close();*/
+
+      section.addNewItem(newCard);
     });
 }
 
 api.getInitialCards().then((initialCards) => {
   section = new Section(initialCards, createCard, elements);
+
   section.renderer();
 });
 
@@ -107,7 +100,13 @@ cambiarNombre();
 
 //  clase section
 function createCard(item) {
-  const card = new Card(item.name, item.link, handleOpenImage);
+  const card = new Card(
+    item.name,
+    item.link,
+    item._id,
+    handleOpenImage,
+    api.deleteCard
+  );
   const cardElement = card.createCard();
   return cardElement;
 }
