@@ -3,10 +3,12 @@ const imgDialog = document.querySelector("#dialog-img");
 const textDialog = document.querySelector("#dialog-text");
 
 export default class Card {
-  constructor(name, link, handleCardClick) {
+  constructor(name, link, id, handleCardClick, handleDeleteClick) {
     this.name = name;
     this.link = link;
+    this.id = id;
     this.handleCardClick = handleCardClick;
+    this.handleDeleteClick = handleDeleteClick;
   }
 
   getTemplate() {
@@ -36,6 +38,20 @@ export default class Card {
 
   removeCard() {
     this.htmlCard.remove();
+    this.handleDeleteClick(this.id);
+  }
+  oppenRemoveCardModal() {
+    const popupRemove = document.querySelector("#popup-delete");
+    popupRemove.classList.add("popup_opened");
+    const button = document.querySelector("#popup-delete-button");
+    button.addEventListener("click", (evt) => {
+      evt.preventDefault;
+      this.removeCard();
+    });
+    /*const buttonClose = document.querySelector("#popup-form-x");
+    buttonClose.addEventListener("click", () => {
+      popupRemove.classList.remove("popup_opened");
+    });*/
   }
 
   setEventsListeners() {
@@ -44,7 +60,7 @@ export default class Card {
     });
 
     this.buttonTrash.addEventListener("click", () => {
-      this.removeCard();
+      this.oppenRemoveCardModal();
     });
 
     this.cardImage.addEventListener("click", () => {

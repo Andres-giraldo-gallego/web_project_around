@@ -1,15 +1,13 @@
+const baseURL = "https://around-api.es.tripleten-services.com/v1";
+const headers = {
+  authorization: "387a3808-ad6d-45cd-b127-9db5833c8e93",
+  "Content-Type": "application/json",
+};
 class Api {
-  constructor(options) {
-    this.baseURL = options.baseUrl;
-    this.headers = options.headers;
-  }
-
   getInitialCards() {
-    return fetch(`${this.baseURL}/cards`, {
+    return fetch(`${baseURL}/cards`, {
       method: "GET",
-      headers: {
-        ...this.headers,
-      },
+      headers,
     }).then((res) => {
       if (res.ok) {
         return res.json();
@@ -18,11 +16,9 @@ class Api {
   }
 
   getUserInfo() {
-    return fetch(`${this.baseURL}/users/me`, {
+    return fetch(`${baseURL}/users/me`, {
       method: "GET",
-      headers: {
-        ...this.headers,
-      },
+      headers,
     }).then((res) => {
       if (res.ok) {
         return res.json();
@@ -31,11 +27,9 @@ class Api {
   }
 
   editUserInfo(body) {
-    return fetch(`${this.baseURL}/users/me`, {
+    return fetch(`${baseURL}/users/me`, {
       method: "PATCH",
-      headers: {
-        ...this.headers,
-      },
+      headers,
       body: JSON.stringify(body),
     }).then((res) => {
       if (res.ok) {
@@ -45,11 +39,9 @@ class Api {
   }
 
   editAvatarUser(avatar) {
-    return fetch(`${this.baseURL}/users/me/avatar`, {
+    return fetch(`${baseURL}/users/me/avatar`, {
       method: "PATCH",
-      headers: {
-        ...this.headers,
-      },
+      headers,
       body: JSON.stringify({
         avatar: avatar,
       }),
@@ -61,12 +53,40 @@ class Api {
   }
 
   createCard(body) {
-    return fetch(`${this.baseURL}/cards/`, {
+    return fetch(`${baseURL}/cards/`, {
       method: "POST",
-      headers: {
-        ...this.headers,
-      },
+      headers,
       body: JSON.stringify(body),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+    });
+  }
+  deleteCard(id) {
+    return fetch(`${baseURL}/cards/${id}`, {
+      method: "DELETE",
+      headers,
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+    });
+  }
+  likeCard(id) {
+    return fetch(`${baseURL}/cards/${id}/likes`, {
+      method: "PUT",
+      headers,
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+    });
+  }
+  dislikeCard(id) {
+    return fetch(`${baseURL}/cards/${id}/likes`, {
+      method: "DELETE",
+      headers,
     }).then((res) => {
       if (res.ok) {
         return res.json();
@@ -75,12 +95,6 @@ class Api {
   }
 }
 
-const api = new Api({
-  baseUrl: "https://around-api.es.tripleten-services.com/v1",
-  headers: {
-    authorization: "387a3808-ad6d-45cd-b127-9db5833c8e93",
-    "Content-Type": "application/json",
-  },
-});
+const api = new Api();
 
 export default api;
