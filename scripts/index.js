@@ -7,6 +7,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import api from "./Api.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
 const buttonEdit = document.querySelector(".profile__edit-button");
 const inputName = document.querySelector("#popup-name");
@@ -16,7 +17,6 @@ const profileHobbie = document.querySelector(".profile__hobbie");
 const buttonAdd = document.querySelector(".profile__add-button");
 const cardName = document.querySelector("#popup-card-name");
 const cardLink = document.querySelector("#popup-link");
-
 const imagAvatar = document.querySelector(".profile__avatar-edit");
 
 // clase popup
@@ -35,11 +35,23 @@ const popupDialog = new Popup("#dialog");
 const imagepopup = new PopupWithImage("#dialog");
 const userInfo = new UserInfo();
 
+const popupWithConfirmation = new PopupWithConfirmation(
+  "#popup-delete",
+  (cardId, card) => {
+    api.deleteCard(cardId).then(() => {
+      popupWithConfirmation.close();
+      card.removeCard();
+    });
+  }
+);
+console.log(popupWithConfirmation);
+
 popup.setEventListeners();
 popupprofile.setEventListeners();
 popupDialog.setEventListeners();
 imagepopup.setEventListeners();
 popupEditAvatar.setEventListeners();
+popupWithConfirmation.setEventListeners();
 
 // clase PopupWithForm
 
@@ -100,13 +112,10 @@ cambiarNombre();
 
 //  clase section
 function createCard(item) {
-  const card = new Card(
-    item.name,
-    item.link,
-    item._id,
-    handleOpenImage,
-    api.deleteCard
-  );
+  const card = new Card(item.name, item.link, item._id, handleOpenImage, () => {
+    popupWithConfirmation.open(item._id, card);
+  });
+
   const cardElement = card.createCard();
   return cardElement;
 }
