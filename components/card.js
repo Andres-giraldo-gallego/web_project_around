@@ -38,20 +38,6 @@ export default class Card {
 
   removeCard() {
     this.htmlCard.remove();
-    this.handleDeleteClick(this.id);
-  }
-  oppenRemoveCardModal() {
-    const popupRemove = document.querySelector("#popup-delete");
-    popupRemove.classList.add("popup_opened");
-    const button = document.querySelector("#popup-delete-button");
-    button.addEventListener("click", (evt) => {
-      evt.preventDefault;
-      this.removeCard();
-    });
-    /*const buttonClose = document.querySelector("#popup-form-x");
-    buttonClose.addEventListener("click", () => {
-      popupRemove.classList.remove("popup_opened");
-    });*/
   }
 
   setEventsListeners() {
@@ -60,7 +46,7 @@ export default class Card {
     });
 
     this.buttonTrash.addEventListener("click", () => {
-      this.oppenRemoveCardModal();
+      this.handleDeleteClick(this.id);
     });
 
     this.cardImage.addEventListener("click", () => {
