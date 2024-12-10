@@ -44,7 +44,20 @@ const popupWithConfirmation = new PopupWithConfirmation(
     });
   }
 );
-console.log(popupWithConfirmation);
+
+function handleLick(id, buttonLink) {
+  console.log(id, buttonLink);
+
+  api.likeCard(id).then(() => {
+    console.log('¡Tarjeta marcada como "me gusta" exitosamente!');
+  });
+}
+
+function handleDisLike(id) {
+  api.dislikeCard(id).then(() => {
+    console.log('¡Tarjeta quitando el "me gusta" exitosamente!');
+  });
+}
 
 popup.setEventListeners();
 popupprofile.setEventListeners();
@@ -96,8 +109,6 @@ imagAvatar.addEventListener("click", (evt) => {
   popupEditAvatar.open();
 });
 
-// userinfo
-
 function profileForm(data) {
   api.editUserInfo(data).then((Response) => {
     userInfo.setUserInfo(Response.name, Response.about, Response.avatar);
@@ -112,9 +123,18 @@ cambiarNombre();
 
 //  clase section
 function createCard(item) {
-  const card = new Card(item.name, item.link, item._id, handleOpenImage, () => {
-    popupWithConfirmation.open(item._id, card);
-  });
+  const card = new Card(
+    item.name,
+    item.link,
+    item._id,
+    handleOpenImage,
+    () => {
+      popupWithConfirmation.open(item._id, card);
+    },
+    handleLick,
+    handleDisLike,
+    item.isLiked
+  );
 
   const cardElement = card.createCard();
   return cardElement;
