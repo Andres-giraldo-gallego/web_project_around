@@ -3,12 +3,24 @@ const imgDialog = document.querySelector("#dialog-img");
 const textDialog = document.querySelector("#dialog-text");
 
 export default class Card {
-  constructor(name, link, id, handleCardClick, handleDeleteClick) {
+  constructor(
+    name,
+    link,
+    id,
+    handleCardClick,
+    handleDeleteClick,
+    handlelick,
+    handleDisLike,
+    isLiked
+  ) {
     this.name = name;
     this.link = link;
     this.id = id;
     this.handleCardClick = handleCardClick;
     this.handleDeleteClick = handleDeleteClick;
+    this.handlelick = handlelick;
+    this.handleDisLike = handleDisLike;
+    this.isLiked = isLiked;
   }
 
   getTemplate() {
@@ -25,6 +37,9 @@ export default class Card {
 
     this.cardImage.src = this.link;
     this.cardDescription.textContent = this.name;
+    if (this.isLiked) {
+      this.buttonLink.classList.add("elements_link-img-active");
+    }
   }
   createCard() {
     this.setProperties();
@@ -33,7 +48,13 @@ export default class Card {
   }
 
   toggleLike() {
-    this.buttonLink.classList.toggle("elements_link-img-active");
+    this.buttonLink.classList.add("elements_link-img-active");
+    this.handlelick(this.id, this.buttonLink);
+  }
+
+  removeLike() {
+    this.buttonLink.classList.remove("elements_link-img-active");
+    this.handleDisLike(this.id, this.buttonLink);
   }
 
   removeCard() {
@@ -42,7 +63,11 @@ export default class Card {
 
   setEventsListeners() {
     this.buttonLink.addEventListener("click", () => {
-      this.toggleLike();
+      if (this.buttonLink.classList.contains("elements_link-img-active")) {
+        this.removeLike();
+      } else {
+        this.toggleLike();
+      }
     });
 
     this.buttonTrash.addEventListener("click", () => {
