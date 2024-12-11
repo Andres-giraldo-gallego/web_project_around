@@ -24,9 +24,8 @@ const popup = new PopupWithForm("#popup-card", creatCard);
 
 const popupEditAvatar = new PopupWithForm("#popup-avatar", editAvatar);
 function editAvatar(data) {
-  api.editAvatarUser(data.avatar).then((response) => {
+  return api.editAvatarUser(data.avatar).then((response) => {
     userInfo.setUserInfo(response.name, response.about, response.avatar);
-    popupEditAvatar.close();
   });
 }
 
@@ -38,7 +37,7 @@ const userInfo = new UserInfo();
 const popupWithConfirmation = new PopupWithConfirmation(
   "#popup-delete",
   (cardId, card) => {
-    api.deleteCard(cardId).then(() => {
+    return api.deleteCard(cardId).then(() => {
       popupWithConfirmation.close();
       card.removeCard();
     });
@@ -55,7 +54,7 @@ function handleLick(id, buttonLink) {
 
 function handleDisLike(id) {
   api.dislikeCard(id).then(() => {
-    console.log('¡Tarjeta quitando el "me gusta" exitosamente!');
+    console.log('¡Quitado el "me gusta" exitosamente!');
   });
 }
 
@@ -82,7 +81,7 @@ buttonEdit.addEventListener("click", function (e) {
 let section;
 
 function creatCard() {
-  api
+  return api
     .createCard({
       name: cardName.value,
       link: cardLink.value,
@@ -110,10 +109,9 @@ imagAvatar.addEventListener("click", (evt) => {
 });
 
 function profileForm(data) {
-  api.editUserInfo(data).then((Response) => {
+  return api.editUserInfo(data).then((Response) => {
     userInfo.setUserInfo(Response.name, Response.about, Response.avatar);
   });
-  popupprofile.close();
 }
 function cambiarNombre() {
   inputName.value = profileName.textContent;
