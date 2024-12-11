@@ -8,6 +8,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import api from "./Api.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
+import "../pages/index.css";
 
 const buttonEdit = document.querySelector(".profile__edit-button");
 const inputName = document.querySelector("#popup-name");

@@ -7,21 +7,21 @@
     <meta name="author" content="Andres Giraldo Gallego" />
     <meta name="keywords" content="Alrededor de los EE.UU." />
     <meta name="description" content="sprint 7 web project around " />
-    <link rel="stylesheet" href="./pages/index.css" />
+    <!-- <link rel="stylesheet" href="./pages/index.css" /> -->
   </head>
   <body>
     <div class="page">
       <header class="header">
-        <img src="images/Vector.svg" alt="logo" class="header__logo" />
+        <img src="<%= require('./images/Vector.svg')%>" alt="logo" class="header__logo" />
       </header>
       <section class="profile">
         <div class="profile__container">
           <img
-            src="images/Vector (1).svg"
+            src="<%= require('./images/Vector (1).svg')%>"
             alt="lapiz"
             class="profile__avatar-edit"
           />
-          <img src="images/Avatar.png" alt="Avatar" class="profile__avatar" />
+          <img src="<%= require('./images/Avatar.png')%>" alt="Avatar" class="profile__avatar" />
         </div>
         <div class="profile__content">
           <div class="profile__info">
@@ -31,7 +31,7 @@
 
           <button class="profile__edit-button" aria-label="Editar perfil">
             <img
-              src="images/Edit Button.png"
+              src="<%= require('./images/Edit Button.png')%>"
               alt="Botón para editar perfil"
               class="profile__edit-button-img"
             />
@@ -42,7 +42,7 @@
           aria-label="Agregar nueva imagen"
         >
           <img
-            src="./images/Add Button.png"
+            src="<%= require('./images/Add Button.png')%>"
             alt="Botón para agregar nueva imagen"
             class="profile__add-button-img"
           />
@@ -57,7 +57,7 @@
               </div>
               <button class="elements__trash" aria-label="Borrar">
                 <img
-                  src="images/Trash.png"
+                  src="<%= require('./images/Trash.png')%>"
                   alt="bote de basura"
                   class="elements__trash-img"
                 />
@@ -67,7 +67,7 @@
                 <p class="elements_text"></p>
                 <button class="elements_link" aria-label="Me gusta">
                   <img
-                    src="images/Group.png"
+                    src="<%= require('./images/Group.png')%>"
                     alt="corazon me gusta"
                     class="elements_link-img"
                   />
@@ -81,7 +81,7 @@
       <dialog class="dialog" id="dialog">
         <button class="dialog__button" id="dialog-x" type="button">
           <img
-            src="images/Close Icon.svg"
+            src="<%= require('./images/Close Icon.svg')%>"
             class="dialog__form-img"
             alt="boton de cierre"
           />
@@ -102,7 +102,7 @@
               type="button"
             >
               <img
-                src="images/Close Icon.svg"
+                src="<%= require('./images/Close Icon.svg')%>"
                 class="popup__form-img"
                 alt="boton de cierre"
               />
@@ -152,7 +152,7 @@
             >
               <img
                 id="popup-x"
-                src="images/Close Icon.svg"
+                src="<%= require('./images/Close Icon.svg')%>"
                 class="popup__form-img"
                 alt="boton de cierre"
               />
@@ -199,7 +199,7 @@
               type="button"
             >
               <img
-                src="images/Close Icon.svg"
+                src="<%= require('./images/Close Icon.svg')%>"
                 class="popup__form-img"
                 alt="boton de cierre"
               />
@@ -235,7 +235,7 @@
               type="button"
             >
               <img
-                src="images/Close Icon.svg"
+                src="<%= require('./images/Close Icon.svg')%>"
                 class="popup__form-img"
                 alt="boton de cierre"
               />
@@ -251,6 +251,6 @@
         </div>
       </div>
     </div>
-    <script type="module" src="scripts/index.js"></script>
+    <!-- <script type="module" src="scripts/index.js"></script> -->
   </body>
 </html>
