@@ -4,7 +4,10 @@
   "description": ". Resumen del proyecto WEB PROJECT AROUND es una pagina web interactiva, donde el usuario va poder utilizarla como una red social.",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack serve"
+    "dev": "webpack serve",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "build": "webpack"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +25,7 @@
     "webpack-cli": "^5.1.4"
   },
   "devDependencies": {
+    "gh-pages": "^6.2.0",
     "webpack-dev-server": "^5.2.0"
   }
 }
